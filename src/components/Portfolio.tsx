@@ -160,27 +160,27 @@ export default function Portfolio() {
           </div>
 
           {/* Grid de imagens */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {filteredImages.map((project, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer group"
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer group"
                 onClick={() => setSelectedImage(project.image)}
               >
                 <div className="relative overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
-                    <ImageIcon className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
+                    <ImageIcon className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={24} />
                   </div>
                 </div>
-                <div className="p-4">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">{project.title}</h4>
-                  <p className="text-gray-600 text-sm mb-2">{project.description}</p>
+                <div className="p-3">
+                  <h4 className="font-bold text-sm text-gray-900 mb-1 line-clamp-2">{project.title}</h4>
+                  <p className="text-gray-600 text-xs mb-2 line-clamp-2">{project.description}</p>
                   <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
                     {project.category}
                   </span>
