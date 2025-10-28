@@ -5,7 +5,7 @@ export default function Hero() {
       id="inicio" 
       className="relative text-white pt-24 min-h-screen flex items-center"
       style={{
-        backgroundImage: 'url(/images/backgrounds/construction-sunset.jpg)',
+        backgroundImage: 'url(/images/backgrounds/construction-sunset.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -17,10 +17,10 @@ export default function Hero() {
       <div className="container mx-auto px-4 py-24 md:py-32 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
-            Excelência em Construção Civil
+            Excelência em <br /> Construção Civil
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-white drop-shadow-lg">
-            Excelência e compromisso em cada etapa da sua obra.<br />
+            Compromisso em cada etapa da sua obra.<br />
             Soluções completas em construção civil industrial e predial.
           </p>
         </div>

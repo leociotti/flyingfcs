@@ -40,7 +40,7 @@ export default function Services() {
 
         <div className="mt-16 bg-green-700 text-white rounded-lg p-8 md:p-12 text-center">
           <h3 className="text-3xl font-bold mb-4">
-            Contratos de Empreitada Global
+            Contratos de Prestação de Serviços
           </h3>
           <p className="text-xl text-green-50 max-w-3xl mx-auto">
             Oferecemos fornecimento de mão de obra efetiva para prestação de serviços de construção e manutenção em empresas
