@@ -50,31 +50,6 @@ export default function Contact() {
             </p>
           </div>
         </div>
-
-        <div className="mt-12 bg-green-700 text-white rounded-lg p-8 text-center max-w-3xl mx-auto">
-          <h3 className="text-2xl font-bold mb-4">
-            Solicite um Orçamento
-          </h3>
-          <p className="text-lg text-green-50 mb-6">
-            Entre em contato conosco e receba um orçamento personalizado para seu projeto
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+551197612-0613"
-              className="bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition inline-flex items-center justify-center space-x-2"
-            >
-              <Phone size={20} />
-              <span>Ligar Agora</span>
-            </a>
-            <a
-              href="mailto:fcsedificacoes@gmail.com"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-700 transition inline-flex items-center justify-center space-x-2"
-            >
-              <Mail size={20} />
-              <span>Enviar E-mail</span>
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
