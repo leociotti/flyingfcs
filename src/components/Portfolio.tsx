@@ -15,28 +15,99 @@ export default function Portfolio() {
     'Comercial Zaragoza (Spani Atacadista)'
   ];
 
-  const projects = [
-    { title: 'Muro de Alvenaria', description: 'Construção de muros industriais' },
-    { title: 'Pavimentação Asfáltica', description: 'Estacionamentos e vias internas' },
-    { title: 'Pintura Epóxi', description: 'Escadas e estruturas industriais' },
-    { title: 'Bases de Concreto Armado', description: 'Fundações e muretas' },
-    { title: 'Diques e Tanques', description: 'Estruturas de contenção' },
-    { title: 'Canaletas de Drenagem', description: 'Sistemas de efluentes e águas pluviais' },
-    { title: 'Acabamentos', description: 'Pisos, azulejos e revestimentos' },
-    { title: 'Gessos e Texturas', description: 'Sancas, molduras e grafiatos' }
+  const projectImages = [
+    {
+      title: 'Muro de Alvenaria',
+      description: 'Construção de muros industriais',
+      image: '/images/Muro de Alvenaria.png',
+      category: 'Estruturas'
+    },
+    {
+      title: 'Pavimentação Asfáltica',
+      description: 'Estacionamentos e vias internas',
+      image: '/images/Pavimentação Asfáltica.png',
+      category: 'Pavimentação'
+    },
+    {
+      title: 'Pintura Epóxi de Escada',
+      description: 'Escadas e estruturas industriais',
+      image: '/images/Pintura Epóxi de Escada.png',
+      category: 'Pintura'
+    },
+    {
+      title: 'Bases e Muretas de Concreto Armado',
+      description: 'Fundações e muretas',
+      image: '/images/Bases e Muretas de Concreto Armado.png',
+      category: 'Estruturas'
+    },
+    {
+      title: 'Dique e Base de Concreto Armado para Tanque',
+      description: 'Estruturas de contenção',
+      image: '/images/Dique e Base de Concreto Armado para Tanque.png',
+      category: 'Estruturas'
+    },
+    {
+      title: 'Canaleta de Concreto para Efluentes e Águas Pluviais',
+      description: 'Sistemas de efluentes e águas pluviais',
+      image: '/images/Canaleta de Concreto para Efluentes e Águas Pluviais.png',
+      category: 'Infraestrutura'
+    },
+    {
+      title: 'Pintura Epóxi de Tanque',
+      description: 'Pintura especializada em tanques',
+      image: '/images/Pintura Epóxi de Tanque.png',
+      category: 'Pintura'
+    },
+    {
+      title: 'Pintura de Piso de Concreto',
+      description: 'Pisos industriais pintados',
+      image: '/images/Pintura de Piso de Concreto.png',
+      category: 'Pintura'
+    },
+    {
+      title: 'Escada Revestida Com Mármore ou Granito',
+      description: 'Acabamentos em mármore e granito',
+      image: '/images/Escada Revestida Com Mármore ou Granito.jpg',
+      category: 'Acabamentos'
+    },
+    {
+      title: 'Piso Mármore ou Granito',
+      description: 'Pisos em mármore e granito',
+      image: '/images/Piso Mármore ou Granito.jpg',
+      category: 'Acabamentos'
+    },
+    {
+      title: 'Revestimento Cerâmico',
+      description: 'Azulejos e revestimentos cerâmicos',
+      image: '/images/Revestimento Cerâmico.jpg',
+      category: 'Acabamentos'
+    },
+    {
+      title: 'Azulejo e Moldura Gesso',
+      description: 'Combinação de azulejos e molduras',
+      image: '/images/Azulejo e Moldura Gesso.jpg',
+      category: 'Acabamentos'
+    },
+    {
+      title: 'Grafiato e Moldura Gesso',
+      description: 'Texturas e molduras em gesso',
+      image: '/images/Grafiato e Moldura Gesso.jpg',
+      category: 'Acabamentos'
+    },
+    {
+      title: 'Sanca de Gesso e Parede Grafiato',
+      description: 'Sancas e texturas em gesso',
+      image: '/images/Sanca de Gesso e Parede Grafiato.jpg',
+      category: 'Acabamentos'
+    }
   ];
 
-  // Array de imagens do portfolio - você pode adicionar mais imagens aqui
-  const portfolioImages = [
-    { src: '/images/portfolio/obra1.jpg', alt: 'Obra Industrial - Votorantim', title: 'Construção Industrial' },
-    { src: '/images/portfolio/obra2.jpg', alt: 'Pavimentação Asfáltica', title: 'Pavimentação' },
-    { src: '/images/portfolio/obra3.jpg', alt: 'Pintura Epóxi', title: 'Pintura Industrial' },
-    { src: '/images/portfolio/obra4.jpg', alt: 'Muro de Alvenaria', title: 'Alvenaria' },
-    { src: '/images/portfolio/obra5.jpg', alt: 'Base de Concreto', title: 'Concreto Armado' },
-    { src: '/images/portfolio/obra6.jpg', alt: 'Canaletas de Drenagem', title: 'Drenagem' },
-    { src: '/images/portfolio/obra7.jpg', alt: 'Acabamentos', title: 'Acabamentos' },
-    { src: '/images/portfolio/obra8.jpg', alt: 'Gessos e Texturas', title: 'Gessos' }
-  ];
+  const categories = ['Todos', 'Estruturas', 'Pavimentação', 'Pintura', 'Acabamentos', 'Infraestrutura'];
+  const [selectedCategory, setSelectedCategory] = useState('Todos');
+
+  const filteredImages = selectedCategory === 'Todos' 
+    ? projectImages 
+    : projectImages.filter(img => img.category === selectedCategory);
 
   return (
     <section id="portfolio" className="py-20 bg-white">
@@ -50,6 +121,7 @@ export default function Portfolio() {
           </p>
         </div>
 
+        {/* Clientes Atendidos */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
             Clientes Atendidos
@@ -64,67 +136,82 @@ export default function Portfolio() {
           </div>
         </div>
 
+        {/* Galeria de Projetos */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Galeria de Obras
+            Galeria de Projetos
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {portfolioImages.map((image, index) => (
-              <div 
-                key={index} 
-                className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
-                onClick={() => setSelectedImage(image.src)}
+          
+          {/* Filtros por categoria */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                  selectedCategory === category
+                    ? 'bg-green-600 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
               >
-                <div className="aspect-w-16 aspect-h-12 bg-gray-200 flex items-center justify-center">
-                  <ImageIcon className="text-gray-400" size={48} />
-                </div>
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center">
-                    <ImageIcon size={32} className="mx-auto mb-2" />
-                    <p className="font-semibold">{image.title}</p>
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid de imagens */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredImages.map((project, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer group"
+                onClick={() => setSelectedImage(project.image)}
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                    <ImageIcon className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
                   </div>
                 </div>
+                <div className="p-4">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">{project.title}</h4>
+                  <p className="text-gray-600 text-sm mb-2">{project.description}</p>
+                  <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                    {project.category}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Serviços Executados
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((project, index) => (
-              <div key={index} className="bg-gradient-to-br from-green-50 to-white p-6 rounded-lg border border-green-100 hover:shadow-lg transition">
-                <h4 className="font-bold text-lg text-gray-900 mb-2">{project.title}</h4>
-                <p className="text-gray-600 text-sm">{project.description}</p>
-              </div>
-            ))}
+        {/* Modal para visualização ampliada */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <div className="relative max-w-4xl max-h-full">
+              <img
+                src={selectedImage}
+                alt="Projeto ampliado"
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition"
+              >
+                ✕
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Modal para visualizar imagem em tamanho maior */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-4xl max-h-full">
-            <img 
-              src={selectedImage} 
-              alt="Obra Flying FCS" 
-              className="max-w-full max-h-full object-contain rounded-lg"
-            />
-            <button 
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
