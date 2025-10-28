@@ -110,7 +110,7 @@ export default function Portfolio() {
     : projectImages.filter(img => img.category === selectedCategory);
 
   return (
-    <section id="portfolio" className="py-20 bg-white">
+    <section id="portfolio" className="py-20 bg-white bg-opacity-95">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
