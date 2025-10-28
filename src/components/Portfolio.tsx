@@ -1,6 +1,9 @@
-import { Building2 } from 'lucide-react';
+import { Building2, Image as ImageIcon } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Portfolio() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const clients = [
     'Votorantim Metais Níquel',
     'Salix Engenharia Ltda',
@@ -21,6 +24,18 @@ export default function Portfolio() {
     { title: 'Canaletas de Drenagem', description: 'Sistemas de efluentes e águas pluviais' },
     { title: 'Acabamentos', description: 'Pisos, azulejos e revestimentos' },
     { title: 'Gessos e Texturas', description: 'Sancas, molduras e grafiatos' }
+  ];
+
+  // Array de imagens do portfolio - você pode adicionar mais imagens aqui
+  const portfolioImages = [
+    { src: '/images/portfolio/obra1.jpg', alt: 'Obra Industrial - Votorantim', title: 'Construção Industrial' },
+    { src: '/images/portfolio/obra2.jpg', alt: 'Pavimentação Asfáltica', title: 'Pavimentação' },
+    { src: '/images/portfolio/obra3.jpg', alt: 'Pintura Epóxi', title: 'Pintura Industrial' },
+    { src: '/images/portfolio/obra4.jpg', alt: 'Muro de Alvenaria', title: 'Alvenaria' },
+    { src: '/images/portfolio/obra5.jpg', alt: 'Base de Concreto', title: 'Concreto Armado' },
+    { src: '/images/portfolio/obra6.jpg', alt: 'Canaletas de Drenagem', title: 'Drenagem' },
+    { src: '/images/portfolio/obra7.jpg', alt: 'Acabamentos', title: 'Acabamentos' },
+    { src: '/images/portfolio/obra8.jpg', alt: 'Gessos e Texturas', title: 'Gessos' }
   ];
 
   return (
@@ -49,6 +64,31 @@ export default function Portfolio() {
           </div>
         </div>
 
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+            Galeria de Obras
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {portfolioImages.map((image, index) => (
+              <div 
+                key={index} 
+                className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                onClick={() => setSelectedImage(image.src)}
+              >
+                <div className="aspect-w-16 aspect-h-12 bg-gray-200 flex items-center justify-center">
+                  <ImageIcon className="text-gray-400" size={48} />
+                </div>
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center">
+                    <ImageIcon size={32} className="mx-auto mb-2" />
+                    <p className="font-semibold">{image.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div>
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
             Serviços Executados
@@ -63,6 +103,28 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
+
+      {/* Modal para visualizar imagem em tamanho maior */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-4xl max-h-full">
+            <img 
+              src={selectedImage} 
+              alt="Obra Flying FCS" 
+              className="max-w-full max-h-full object-contain rounded-lg"
+            />
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

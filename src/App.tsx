@@ -19,7 +19,7 @@ function App() {
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
-            © 2024 Flying FCS Serviços em Edificações LTDA. Todos os direitos reservados.
+            © 2025 Flying FCS Serviços em Edificações LTDA. Todos os direitos reservados.
           </p>
           <p className="text-xs text-gray-400 mt-2">
             CNPJ: 40.036.058/0001-88
