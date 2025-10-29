@@ -22,7 +22,7 @@ function App() {
             © 2025 Flying FCS Serviços em Edificações LTDA. Todos os direitos reservados.
           </p>
           <p className="text-xs text-gray-400 mt-2">
-            CNPJ: 40.036.058/0001-88
+            CNPJ: 40.036.058/0001-00
           </p>
         </div>
       </footer>

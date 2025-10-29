@@ -32,8 +32,8 @@ export default function Contact() {
               <Mail className="text-green-600" size={28} />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">E-mail</h3>
-            <a href="mailto:fcsedificacoes@gmail.com" className="text-green-600 hover:text-green-700 font-semibold break-all">
-              fcsedificacoes@gmail.com
+            <a href="mailto:contato@flyingfcs.com.br" className="text-green-600 hover:text-green-700 font-semibold break-all">
+            contato@flyingfcs.com.br
             </a>
           </div>
 
@@ -46,7 +46,7 @@ export default function Contact() {
               Rua Lázaro Godoi, s/n<br />
               Casa 02 - Jardim Guapira<br />
               São Paulo - SP<br />
-              CEP: 02.318-110
+              CEP: 02318-110
             </p>
           </div>
         </div>
