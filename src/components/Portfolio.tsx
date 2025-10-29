@@ -117,7 +117,7 @@ export default function Portfolio() {
             Portfolio
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Trabalhos realizados com excelência para grandes empresas
+            Trabalhos realizados com compromisso para grandes empresas
           </p>
         </div>
 
