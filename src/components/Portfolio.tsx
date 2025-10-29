@@ -1,8 +1,9 @@
-import { Building2, Image as ImageIcon } from 'lucide-react';
-import { useState } from 'react';
+import { Building2, Image as ImageIcon, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function Portfolio() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const clients = [
     'Votorantim Metais Níquel',
@@ -109,6 +110,54 @@ export default function Portfolio() {
     ? projectImages 
     : projectImages.filter(img => img.category === selectedCategory);
 
+  // Funções do carrossel
+  const openCarousel = (imageIndex: number) => {
+    setCurrentIndex(imageIndex);
+    setSelectedImage(filteredImages[imageIndex].image);
+  };
+
+  const closeCarousel = () => {
+    setSelectedImage(null);
+    setCurrentIndex(0);
+  };
+
+  const goToPrevious = () => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : filteredImages.length - 1;
+    setCurrentIndex(newIndex);
+    setSelectedImage(filteredImages[newIndex].image);
+  };
+
+  const goToNext = () => {
+    const newIndex = currentIndex < filteredImages.length - 1 ? currentIndex + 1 : 0;
+    setCurrentIndex(newIndex);
+    setSelectedImage(filteredImages[newIndex].image);
+  };
+
+  // Navegação por teclado
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (selectedImage) {
+        switch (event.key) {
+          case 'ArrowLeft':
+            event.preventDefault();
+            goToPrevious();
+            break;
+          case 'ArrowRight':
+            event.preventDefault();
+            goToNext();
+            break;
+          case 'Escape':
+            event.preventDefault();
+            closeCarousel();
+            break;
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentIndex, filteredImages.length]);
+
   return (
     <section id="portfolio" className="py-20 bg-white bg-opacity-95">
       <div className="container mx-auto px-4">
@@ -165,7 +214,7 @@ export default function Portfolio() {
               <div
                 key={index}
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer group"
-                onClick={() => setSelectedImage(project.image)}
+                onClick={() => openCarousel(index)}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -190,24 +239,59 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Modal para visualização ampliada */}
+        {/* Modal do carrossel */}
         {selectedImage && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
-            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+            onClick={closeCarousel}
           >
-            <div className="relative max-w-4xl max-h-full">
-              <img
-                src={selectedImage}
-                alt="Projeto ampliado"
-                className="max-w-full max-h-full object-contain rounded-lg"
-              />
+            <div className="relative max-w-6xl max-h-full w-full" onClick={(e) => e.stopPropagation()}>
+              {/* Botão fechar */}
               <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition"
+                onClick={closeCarousel}
+                className="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition z-10"
               >
-                ✕
+                <X size={24} />
               </button>
+
+              {/* Botão anterior */}
+              <button
+                onClick={goToPrevious}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-3 transition z-10"
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              {/* Botão próximo */}
+              <button
+                onClick={goToNext}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-3 transition z-10"
+              >
+                <ChevronRight size={24} />
+              </button>
+
+              {/* Imagem */}
+              <div className="text-center">
+                <img
+                  src={selectedImage}
+                  alt={filteredImages[currentIndex]?.title}
+                  className="max-w-full max-h-[70vh] object-contain rounded-lg mx-auto"
+                />
+                
+                {/* Informações da imagem */}
+                <div className="mt-4 text-white">
+                  <h3 className="text-2xl font-bold mb-2">{filteredImages[currentIndex]?.title}</h3>
+                  <p className="text-lg mb-2">{filteredImages[currentIndex]?.description}</p>
+                  <span className="inline-block bg-green-600 text-white text-sm px-3 py-1 rounded-full">
+                    {filteredImages[currentIndex]?.category}
+                  </span>
+                </div>
+
+                {/* Contador */}
+                <div className="mt-4 text-white text-sm">
+                  {currentIndex + 1} de {filteredImages.length}
+                </div>
+              </div>
             </div>
           </div>
         )}
