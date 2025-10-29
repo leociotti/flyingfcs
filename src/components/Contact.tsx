@@ -22,9 +22,6 @@ export default function Contact() {
             <a href="tel:+551197612-0613" className="text-green-600 hover:text-green-700 font-semibold block mb-2">
               (11) 97612-0613
             </a>
-            <a href="tel:+55112385-4864" className="text-green-600 hover:text-green-700 font-semibold block">
-              (11) 2385-4864
-            </a>
           </div>
 
           <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition">
@@ -43,8 +40,8 @@ export default function Contact() {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Endereço</h3>
             <p className="text-gray-700">
-              Rua Lázaro Godoi, s/n<br />
-              Casa 02 - Jardim Guapira<br />
+              Rua Lázaro Godoi, 2<br />
+              Jardim Guapira<br />
               São Paulo - SP<br />
               CEP: 02318-110
             </p>
