@@ -103,7 +103,7 @@ src/
 ## 📞 Informações da Empresa
 
 - **Nome**: Flying FCS Serviços em Edificações LTDA
-- ****: 40.036.058/0001-88
+- ****: 40.036.058/0001-00
 - **Endereço**: Rua Lázaro Godoi, s/n, Casa 02 - Jardim Guapira, São Paulo - SP
 - **CEP**: 02.318-110
 - **Telefones**: (11) 97612-0613 / (11) 2385-4864
@@ -112,11 +112,11 @@ src/
 
 ## 🎯 Próximos Passos
 
-1. **Registrar domínio** (opcional): flyingfcs.com.br (~R$ 40/ano)
+1. **Registrar domínio** (opcional): flyingfcs.com.br (~R$ 40/ano) - ok hostinger
 2. **Configurar Google Analytics** para acompanhar visitantes
 3. **Adicionar certificados e licenças** na seção sobre
-4. **Implementar formulário de contato** com envio de e-mail
-5. **Adicionar galeria de fotos** dos projetos realizados
+4. **Implementar formulário de contato** com envio de e-mail - NAO
+5. **Adicionar galeria de fotos** dos projetos realizados - OK
 
 ## 📝 Licença
 
